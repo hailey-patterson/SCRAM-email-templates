@@ -1,0 +1,481 @@
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></p>
+<title></title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ===========================
+      Design Tokens
+   ============================ */
+   :root{
+     /* colors */
+     --ink: #1e1e1e;
+     --ink-2:#2c2c2c;
+     --brand:#003B64;
+     --muted:#f4f6f8;
+     --white:#fff;
+
+     /* gradients */
+     --grad-a:#2B7FFF;
+     --grad-b:#00B8DA;
+
+     /* sizing */
+     --max: 1200px;
+     --radius: 12px;
+
+     /* spacing scale (t-shirt sizes) */
+     --px: clamp(16px, 2vw, 24px);     /* container padding-x */
+     --y-1: clamp(10px, 1.2vw, 14px);
+     --y-2: clamp(18px, 1.6vw, 24px);
+     --y-3: clamp(22px, 2.2vw, 32px);
+     --y-4: clamp(28px, 3vw, 44px);
+     --y-5: clamp(36px, 4vw, 56px);
+     --y-6: clamp(44px, 5vw, 72px);
+
+     /* type */
+     --h1: clamp(28px, 5vw, 48px);
+     --h2: clamp(22px, 3vw, 32px);
+     --h3: clamp(20px, 2.6vw, 28px);
+     --lead: clamp(16px, 1.8vw, 20px);
+     --body: clamp(15px, 1.4vw, 18px);
+     --small: clamp(13px, 1.2vw, 14px);
+
+     /* gaps */
+     --gap-1: clamp(8px, 1.5vw, 14px);
+     --gap-2: clamp(12px, 2vw, 18px);
+     --gap-3: clamp(16px, 2.5vw, 24px);
+     --gap-4: clamp(20px, 3vw, 32px);
+     --gap-5: clamp(28px, 4vw, 40px);
+   }
+
+   /* ===========================
+      Base
+   ============================ */
+   *{ box-sizing: border-box; }
+   html, body { height: 100%; }
+   body{
+     margin:0;
+     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+     color:var(--ink);
+     line-height:1.55;
+     background: var(--white);
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+
+   .container{
+     max-width: var(--max);
+     margin-inline: auto;
+     padding-inline: var(--px);
+     width: 100%;
+   }
+
+   h1,h2,h3,h4,p{ margin: 0; }
+   a{ color: inherit; text-decoration: none; }
+   img{ max-width: 100%; display: block; }
+
+   /* Focus states */
+   a:focus-visible, button:focus-visible{
+     outline: 3px solid #8AC5FF;
+     outline-offset: 2px;
+     border-radius: 6px;
+   }
+
+   /* ===========================
+      Hero
+   ============================ */
+   .hero{
+     position: relative;
+     min-height: clamp(300px, 40vw, 520px);
+     background: url("https://go.scramsystems.com/l/149911/2025-11-12/2176fg/149911/1762953345SJSaqaZ0/v1_4.png") center 65% / cover no-repeat;
+     display: grid;
+     align-items: end;
+     padding-block: var(--y-4);
+     background-position: 30% 0% !important;
+     background-size: cover !important;
+   }
+  
+   .hero::after{
+     content:"";
+     position:absolute; inset:0;
+     background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.45) 100%);
+   }
+   .hero__content{
+     position: relative; z-index: 1;
+     color:#fff;
+     width:100%;
+   }
+   .hero__title{
+     font-size: var(--h1);
+     font-weight: 700;
+     line-height: 1.1;
+     text-wrap: balance;
+     margin-bottom: var(--y-2);
+   }
+   .hero__sub{
+     max-width: 60ch;
+     font-size: var(--lead);
+     opacity:.95;
+   }
+
+   /* ===========================
+      Intro (image + copy)
+   ============================ */
+   .section{
+     padding-block: var(--y-5);
+   }
+   .intro__wrap{
+     display:grid;
+     gap: var(--gap-4);
+     grid-template-columns: 1fr;
+     align-items:center;
+   }
+   @media (min-width: 900px){
+     .intro__wrap{ grid-template-columns: 1fr 1.1fr; }
+   }
+   .intro__media{
+     border-radius: var(--radius);
+     background: url("https://storage.pardot.com/149911/1762953345mi6PfhJE/v2_14.png") center/cover no-repeat;
+     aspect-ratio: 4/3;
+     min-height: 260px;
+   }
+   .intro__copy h2{
+     font-size: var(--h2);
+     font-weight: 600;
+     margin-bottom: var(--y-2);
+   }
+   .intro__copy p{
+     font-size: var(--body);
+     color: var(--ink-2);
+     white-space: pre-wrap;
+   }
+
+   /* ===========================
+      Lead header (centered)
+   ============================ */
+   .lead{
+     text-align:center;
+     padding-block: var(--y-4);
+   }
+   .lead h3{
+     font-size: var(--h3);
+     font-weight: 700;
+     margin-bottom: var(--y-2);
+   }
+   .lead p{
+     margin-inline:auto;
+     max-width: 60ch;
+     font-size: var(--lead);
+     color: var(--ink-2);
+   }
+
+   /* ===========================
+      Product blocks
+   ============================ */
+   .product{
+     padding-block: var(--y-4);
+     background: transparent;
+   }
+   .product__wrap{
+     display:grid;
+     grid-template-columns: 1fr;
+     gap: var(--gap-4);
+     align-items: stretch;
+   }
+   @media (min-width: 960px){
+     .product__wrap{ grid-template-columns: 1.05fr 1fr; }
+     .product--reverse .product__wrap{ grid-template-columns: 1fr 1.05fr; }
+     .product--reverse .product__media{ order: 2; }
+     .product--reverse .product__text{ order: 1; }
+   }
+
+   /* MEDIA: now using real <img>, clipped to rounded corners */
+   .product__media{
+     background: var(--muted);
+     border-radius: var(--radius);
+     width: 100%;
+     min-height: clamp(220px, 26vw, 360px);
+     display: grid;
+     place-items: center;
+     overflow: hidden;
+   }
+
+   .product__media > img{
+     width: 100%;
+     height: 100%;
+     object-fit: contain;
+     display: block;
+   }
+
+   .product__text{
+     display:grid;
+     align-content:start;
+     gap: var(--gap-2);
+   }
+   .product__text h4{
+     font-size: var(--h2);
+     font-weight:700;
+   }
+   .product__text .kicker{
+     font-size: var(--body);
+     color: var(--ink-2);
+   }
+
+   .bullets{
+     display:grid;
+     gap: var(--gap-2);
+   }
+.bullet{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bullet-icon{
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bullet-icon img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+
+
+
+   /* CAM image a bit smaller than RB on wide screens */
+   @media (min-width: 960px){
+     .product--reverse .product__media.product__media--cam{
+       max-width: 520px;
+       justify-self: center;
+     }
+   }
+
+   .inline-link {
+    color: #2f6ea3;
+    text-decoration: underline;
+   }
+
+   /* ===========================
+      Impact Quote (standalone)
+   ============================ */
+   .impact-quote{
+     padding-block: var(--y-4);
+     background: transparent;
+   }
+   .impact-quote__box{
+     position: relative;
+     margin: 0 auto;
+     margin-bottom: 40px;
+     max-width: 70ch;
+     padding: var(--y-2) var(--y-3);
+     padding-left: calc(var(--y-3) + 8px);
+     font-size: var(--lead);
+     line-height: 1.45;
+     color: var(--ink);
+     background: var(--white);
+     border-radius: var(--radius);
+   }
+   .impact-quote__box::before{
+     content:"";
+     position: absolute;
+     left: var(--y-2);
+     top: var(--y-2);
+     bottom: var(--y-2);
+     width: 4px;
+     border-radius: 4px;
+     background: var(--brand);
+   }
+
+   /* ===========================
+      CTA Section
+   ============================ */
+   .cta{
+     color:#fff;
+     padding-block: var(--y-5);
+     background: url("https://go.scramsystems.com/l/149911/2025-11-12/2176f8/149911/1762953345OpDrs5im/table.png") center/cover no-repeat;
+     position: relative;
+   }
+   .cta::after{
+     content:"";
+     position:absolute; inset:0;
+     background: rgba(0,0,0,.35);
+   }
+   .cta > .container{ position: relative; z-index: 1; }
+
+   .cta__panel{
+     display:grid;
+     gap: var(--gap-2);
+     justify-items:center;
+     text-align:center;
+     padding: var(--y-3);
+   }
+   .cta__panel h5{
+     font-size: clamp(24px, 3vw, 44px);
+     line-height: 1.1;
+     font-weight:700;
+     color:#fff;
+   }
+   .cta__panel p{
+     max-width: 70ch;
+     font-size: var(--lead);
+     color:#fff;
+   }
+
+   .cta__actions{
+     display:flex;
+     gap: var(--gap-2);
+     flex-wrap:wrap;
+     justify-content:center;
+     margin-top: var(--y-2);
+   }
+   .btn{
+     appearance:none;
+     border:none;
+     border-radius: 999px;
+     padding: .7rem 1.1rem;
+     font-weight:600;
+     cursor:pointer;
+     line-height:1;
+     display:inline-block;
+   }
+   .btn--primary{
+     background: #fff;
+     color:#000;
+   }
+   .btn--ghost{
+     background: transparent;
+     color:#fff;
+     outline: 2px solid rgba(255,255,255,.6);
+   }
+
+   /* ===========================
+      Utilities
+   ============================ */
+   .sr-only{
+     position:absolute!important; width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+   }
+
+   /* Link inside the blockquote only */
+   blockquote.impact-quote__box a{
+     color: #428BCA;
+     font-weight: 600;
+     text-decoration: underline;
+     text-underline-offset: 2px;
+   }
+   blockquote.impact-quote__box a:hover,
+   blockquote.impact-quote__box a:focus-visible{
+     color: #2f6ea3;
+     text-decoration-thickness: 2px;
+   }
+</style>
+<!-- ===========================
+      HERO
+ ============================ -->
+<header aria-label="Holiday accountability banner" class="hero" role="banner">
+<div class="container hero__content">
+<h1 class="hero__title">Home for The Holidays:<br />
+The Season of Sobriety</h1>
+</div>
+</header>
+<!-- ===========================
+      INTRO
+ ============================ -->
+
+<section class="section intro">
+<div class="container intro__wrap">
+<div aria-label="Clients and family during holidays" class="intro__media" role="img">&nbsp;</div>
+
+<div class="intro__copy">
+<h2>Support your clients in staying accountable&mdash;and home with their families&mdash;this holiday season.</h2>
+
+<p>The holidays are meant to bring people together, but for many, they also bring challenges. Grief and loss, family pressures, work stress, and financial strain can make staying sober even harder. The season can magnify every trigger&mdash;loneliness, unrealistic expectations, and the desire to escape. For individuals in recovery or under supervision, the pressure to maintain sobriety while rebuilding trust and family connections can feel overwhelming. This year, help your clients find the accountability they need to stay sober, safe, and connected.</p>
+</div>
+</div>
+</section>
+<!-- ===========================
+      LEAD
+ ============================ -->
+
+<section aria-label="Solutions overview" class="lead">
+<div class="container">
+<h3>Accountability Tools That Make a Difference</h3>
+
+<p>SCRAM Systems offers proven alcohol monitoring technologies to help clients remain compliant, rebuild trust, and stay home for the holidays.</p>
+</div>
+</section>
+<!-- ===========================
+      PRODUCT: Remote Breath Pro
+ ============================ -->
+
+<section aria-labelledby="rb-heading" class="product">
+<div class="container product__wrap">
+<div class="product__media"><img alt="SCRAM CAM on ankle" src="https://go.scramsystems.com/l/149911/2025-11-14/217b9n/149911/1763129100Rm8uoNLn/Scram_RB198.jpg" /></div>
+
+<div class="product__text">
+<h4 id="rb-heading">SCRAM Remote Breath&reg; Pro</h4>
+
+<div class="bullets">
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Scheduled, on-demand, or random testing options</span></div>
+
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Advanced facial recognition and location tracking</span></div>
+
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Instant alerts and tamper detection</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ===========================
+      PRODUCT: SCRAM CAM (reverse)
+ ============================ -->
+
+<section aria-labelledby="cam-heading" class="product product--reverse">
+<div class="container product__wrap">
+<div class="product__media"><img alt="SCRAM Remote Breath Pro device" src="https://go.scramsystems.com/l/149911/2025-11-14/217b9k/149911/1763129100trzOO1sv/Device_on_Ankle.jpg" /></div>
+
+<div class="product__text">
+<h4 id="cam-heading">SCRAM CAM&reg; (Continuous Alcohol Monitoring)</h4>
+
+<p class="kicker">The gold standard for 24/7 alcohol monitoring, SCRAM CAM:</p>
+
+<div class="bullets">
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Automatically tests every 30 minutes via transdermal (skin) readings</span></div>
+
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Detects drinking and attempts to tamper</span></div>
+
+<div class="bullet"><span aria-hidden="true" class="bullet-icon"><img alt="" src="https://go.scramsystems.com/l/149911/2025-11-18/217fwn/149911/1763496083WOr4vjcC/icons8_check_30.png" /> </span> <span>Helps and supports long-term behavior change and accountability</span></div>
+
+<p class="kicker">Hear how <a class="inline-link" href="https://www.scramsystems.com/scram-blog/treatment-courts-long-term-change/">Brazoria County Recovery Court</a> uses SCRAM CAM as a tool for their participants&mdash; and hear from two <a class="inline-link" href="https://www.scramsystems.com/client-voices/">program graduates</a> on how this technology supported them with long-term success.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ===========================
+      IMPACT QUOTE
+ ============================ -->
+
+<section>
+<blockquote class="impact-quote__box"><a class="impact-quote__link" href="https://www.scramsystems.com/client-voices/">Our client</a> voluntarily wore SCRAM CAM for over two years, calling it his &ldquo;Dumbo feather&rdquo; &mdash; a reminder that accountability made sobriety possible.</blockquote>
+</section>
+<!-- ===========================
+      CTA
+ ============================ -->
+
+<section aria-label="Call to action" class="cta">
+<div class="container">
+<div class="cta__panel">
+<h5>Help Clients Stay Home, Sober, and Successful</h5>
+
+<p>Whether your clients are participating in a structured recovery program, or just need to be held accountable to themselves or others, SCRAM Systems provides monitoring solutions that help them stay on track.<br />
+<br />
+Help your clients find a SCRAM Systems Service Provider to get started today.</p>
+
+<div class="cta__actions"><a class="btn btn--primary" href="https://www.scramsystems.com/providers/">Find a Service Provider </a> <a class="btn btn--ghost" href="https://www.scramsystems.com/"> Learn More About SCRAM Monitoring </a></div>
+</div>
+</div>
+</section>
